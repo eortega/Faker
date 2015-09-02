@@ -48,42 +48,41 @@ class Address extends \Faker\Provider\Address
         return static::randomElement(static::$streetPrefix);
     }
 
-         /**
-         * @example 'Zacatecas'
-         */
-        public static function state()
-        {
-            return static::randomElement(array_values(static::$state));
-        }
+    /**
+    * @example 'Zacatecas'
+    */
+    public static function state()
+    {
+        return static::randomElement(array_values(static::$state));
+    }
 
-        /**
-        * @example 32 to Zacatecas
-        */
-        public static function stateNumber()
-        {
-              return static::randomElement(array_keys(static::$state));
-        }
+    /**
+    * @example 32 to Zacatecas
+    */
+    public static function stateNumber()
+    {
+        return static::randomElement(array_keys(static::$state));
+    }
 
-        public static function stateNameByNumber($stateNumber)
-        {
-              return static::$state[$stateNumber];
-        }
+    public static function stateNameByNumber($stateNumber)
+    {
+        return static::$state[$stateNumber];
+    }
 
         /**
          * @example 'Nro 3'
          */
-        public static function secondaryAddress()
-        {
-            return static::numerify(static::randomElement(static::$secondaryAddressFormats));
-        }
+    public static function secondaryAddress()
+    {
+        return static::numerify(static::randomElement(static::$secondaryAddressFormats));
+    }
 
-        public static function postcodeByStateNumber($stateNumber){
-            $postcodesRange=isset(self::$postcodeRangesByState[$stateNumber]) ? self::$postcodeRangesByState[$stateNumber] : $array();
-            $ranges= explode('-', $postcodesRange);
-            $zipcodeBegin= count($ranges) == 1 ? $ranges[0] : self::numberBetween($ranges[0], $ranges[1]) ;
-            $format = str_pad($zipcodeBegin, 2, "0", STR_PAD_LEFT)."###";
-            return static::numerify($format);
-
-        }
+    public static function postcodeByStateNumber($stateNumber)
+    {
+        $postcodesRange=isset(self::$postcodeRangesByState[$stateNumber]) ? self::$postcodeRangesByState[$stateNumber] : $array();
+        $ranges= explode('-', $postcodesRange);
+        $zipcodeBegin= count($ranges) == 1 ? $ranges[0] : self::numberBetween($ranges[0], $ranges[1]) ;
+        $format = str_pad($zipcodeBegin, 2, "0", STR_PAD_LEFT)."###";
+        return static::numerify($format);
+    }
 }
-?>

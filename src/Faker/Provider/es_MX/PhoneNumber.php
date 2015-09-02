@@ -47,8 +47,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
      */
     public function tollSimpleFormat()
     {
-      $format = $this->generator->parse(static::randomElement(static::$simpleFormat));
+        $format = $this->generator->parse(static::randomElement(static::$simpleFormat));
         return static::numerify($format);
     }
 }
- ?>
